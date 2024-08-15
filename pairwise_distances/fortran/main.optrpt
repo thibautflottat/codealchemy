@@ -1,0 +1,40 @@
+Global optimization report for : MAIN__
+
+LOOP BEGIN at main.f90 (22, 10)
+
+    LOOP BEGIN at main.f90 (22, 10)
+        remark #15521: Loop was not vectorized: loop control variable was not identified. Explicitly compute the iteration count before executing the loop or try using canonical loop form from OpenMP specification
+    LOOP END
+LOOP END
+=================================================================
+
+---- Begin Inlining Report ----
+Option Values:
+  inline-threshold: 225
+  inlinehint-threshold: 325
+  inlinecold-threshold: 45
+  inlineoptsize-threshold: 15
+
+DEAD STATIC FUNC: for_random_seed_put
+
+DEAD STATIC FUNC: llvm.memset.p0.i64
+
+COMPILE FUNC: MAIN__
+   -> DELETE: for_random_seed_put main.f90 (21,10)
+   -> EXTERN: for_set_fpe_ main.f90 (1,9)
+   -> EXTERN: for_set_reentrancy main.f90 (1,9)
+   -> EXTERN: for_getcmd_arg_err main.f90 (13,10)
+   -> EXTERN: for_read_int_lis main.f90 (14,5)
+   -> EXTERN: for_check_mult_overflow64 main.f90 (17,5)
+   -> EXTERN: for_alloc_allocatable_handle main.f90 (17,5)
+   -> EXTERN: for_check_mult_overflow64 main.f90 (18,5)
+   -> EXTERN: for_alloc_allocatable_handle main.f90 (18,5)
+   -> EXTERN: for_random_seed_bit_size main.f90 (21,10)
+   -> EXTERN: for_random_number_single main.f90 (22,10)
+   -> EXTERN: pairwise_mp_pairwise_distances_ main.f90 (25,10)
+   -> EXTERN: for_dealloc_allocatable_handle main.f90 (28,5)
+   -> EXTERN: for_dealloc_allocatable_handle main.f90 (29,5)
+   -> DELETE: llvm.memset.p0.i64 main.f90 (10,30)
+   -> DELETE: llvm.memset.p0.i64 main.f90 (9,30)
+
+---- End Inlining Report ------

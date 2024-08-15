@@ -21,7 +21,7 @@ void pairwise_distances(int n_particles, float* positions, float* distances, flo
     // Start time
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    #pragma omp parallel for private(i, j, dx, dy, dz, dist) shared(n_particles, positions, distances)
+    #pragma omp parallel for private(i, j, dx, dy, dz, dist) shared(n_particles, positions, distances) schedule(dynamic)
     for (i = 0; i < n_particles; i++) {
         for (j = i + 1; j < n_particles; j++) {
             dx = positions[i * 3 + 0] - positions[j * 3 + 0];

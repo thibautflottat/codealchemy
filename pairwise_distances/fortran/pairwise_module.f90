@@ -6,8 +6,9 @@ module pairwise
 contains
 
     subroutine pairwise_distances(positions, n_particles, distances)
+        use omp_lib
         implicit none
-
+        
         integer, intent(in) :: n_particles
         real(sp), intent(in) :: positions(n_particles, 3)
         real(sp), intent(out) :: distances(n_particles, n_particles)
@@ -29,9 +30,10 @@ contains
         ! end do
 
         !$omp parallel private(i, j, dx, dy, dz, dist)
-        !$omp do
-        do i = 1, n_particles
-            do j = i + 1, n_particles
+        !$omp do schedule(dynamic)
+        do j = 1, n_particles
+            !$omp simd
+            do i = j + 1, n_particles
                 dx = positions(i, 1) - positions(j, 1)
                 dy = positions(i, 2) - positions(j, 2)
                 dz = positions(i, 3) - positions(j, 3)
@@ -60,11 +62,11 @@ contains
         print *, 'Execution time (seconds):', exec_time
 
         ! Debugging: Print the distances matrix
-        do i = 1, n_particles
-            do j = 1, n_particles
-                print *, 'distances(', i, ',', j, ') = ', distances(i, j)
-            end do
-        end do
+        ! do i = 1, n_particles
+        !     do j = 1, n_particles
+        !         print *, 'distances(', i, ',', j, ') = ', distances(i, j)
+        !     end do
+        ! end do
 
     end subroutine pairwise_distances
 

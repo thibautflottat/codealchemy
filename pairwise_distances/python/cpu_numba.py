@@ -39,7 +39,7 @@ del distances
 
 # Example usage
 L = 1.0   # Length of the cubic box
-N = 50000  # Number of particles
+N = 40000  # Number of particles
 
 # Initialize particle positions randomly within the box
 positions = np.random.rand(N, 3).astype(np.float32) * L
