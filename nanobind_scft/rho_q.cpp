@@ -2,7 +2,7 @@
 #include <nanobind/stl/vector.h>
 #include <nanobind/stl/complex.h>
 #include <nanobind/ndarray.h>
-#include <omp.h>
+#include "/opt/homebrew/opt/libomp/include/omp.h"
 
 namespace nb = nanobind;
 
