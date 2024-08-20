@@ -8,10 +8,14 @@ function compute_rho(Nx::Int, Nq::Int)
     q = rand(Nq, 3)
     rho = zeros(ComplexF64, Nq)
 
-    # Compute dot product and rho in one go
+    # Parallel computation of rho
     @threads for j in 1:Nq
-        alpha = dot(x[:, 1], q[j, 1]) + dot(x[:, 2], q[j, 2]) + dot(x[:, 3], q[j, 3])
-        rho[j] = sum(exp.(1im * alpha))
+        sum_rho = 0.0 + 0.0im
+        @inbounds for i in 1:Nx
+            alpha = dot(x[i, :], q[j, :])
+            sum_rho += exp(1im * alpha)
+        end
+        rho[j] = sum_rho
     end
 
     return rho
