@@ -8,10 +8,10 @@ function compute_rho(Nx::Int, Nq::Int)
     q = rand(Nq, 3)
     rho = zeros(ComplexF64, Nq)
 
-    # Parallel computation of rho
+    # Parallel computation of rho with SIMD
     @threads for j in 1:Nq
         sum_rho = 0.0 + 0.0im
-        @inbounds for i in 1:Nx
+        @inbounds @simd for i in 1:Nx
             alpha = dot(x[i, :], q[j, :])
             sum_rho += exp(1im * alpha)
         end

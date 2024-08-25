@@ -24,8 +24,8 @@ void rho_q(const std::vector<double>& x,
 }
 
 int main() {
-    size_t Nx = 100000;
-    size_t Nq = 100000;
+    size_t Nx = 10000;
+    size_t Nq = 10000;
 
     std::vector<double> x(Nx * 3);
     std::vector<double> q(Nq * 3);
