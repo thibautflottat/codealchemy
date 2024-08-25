@@ -7,7 +7,7 @@
 #include <time.h>
 
 void rho_q(const double* x, const double* q, double complex* rho, size_t Nx, size_t Nq) {
-    #pragma omp parallel for
+    #pragma omp parallel for schedule(dynamic)
     for (size_t i = 0; i < Nq; ++i) {
         double complex rho_value = 0.0 + 0.0 * I;
 
