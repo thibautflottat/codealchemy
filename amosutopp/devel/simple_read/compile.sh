@@ -1,0 +1,2 @@
+g++-14 -std=c++23 read_trj.cpp -o read_trj -I/usr/local/include -lchemfiles -L/usr/local/lib
+g++-14 -std=c++14 compare_vector_vs_multiarray.cpp -o compare -I/opt/homebrew/Cellar/boost/1.86.0/include -I/usr/local/include -lchemfiles -L/usr/local/lib

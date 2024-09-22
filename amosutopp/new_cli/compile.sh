@@ -1,0 +1,1 @@
+g++-14 -I./src -o babek app/main.cpp src/base.cpp src/command1/command1.cpp -I/usr/local/include -lchemfiles -L/usr/local/lib

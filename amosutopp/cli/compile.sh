@@ -1,0 +1,1 @@
+g++-14 app/main.cpp src/rdf.cpp src/density.cpp src/base.cpp -o mycli -I/usr/local/include # -lcli11 -L/usr/local/lib
