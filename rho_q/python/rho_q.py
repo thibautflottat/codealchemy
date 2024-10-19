@@ -8,7 +8,7 @@ def dot(a, b):
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
 
 # Define the parallelized function to compute rho for all q-points
-@numba.njit(fastmath=True, nogil=True)
+@numba.njit(parallel=True, fastmath=True, nogil=True)
 def rho_q(x: np.ndarray, q: np.ndarray, rho: np.ndarray):
     Nx = len(x)
     Nq = len(q)
@@ -18,8 +18,8 @@ def rho_q(x: np.ndarray, q: np.ndarray, rho: np.ndarray):
             rho[i, j] = np.exp(1j * alpha)
 
 # Generate random data
-Nx = 10000
-Nq = 10000
+Nx = 20000
+Nq = 20000
 x = np.random.rand(Nx, 3)
 q = np.random.rand(Nq, 3)
 rho = np.zeros((Nq, Nx), dtype=np.complex128)
